@@ -1,0 +1,167 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 1ecf8209826fcbfe73944c6697fa36bbe1b2ac74)
++++ .idea/misc.xml	(revision 3171e47fe756e3ecd7cdeab42ab138ba66bff43d)
+@@ -29,7 +29,7 @@
+       </value>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: app/src/main/java/com/example/miguelpelmedina/prempotrados/MainActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/miguelpelmedina/prempotrados/MainActivity.java	(revision 1ecf8209826fcbfe73944c6697fa36bbe1b2ac74)
++++ app/src/main/java/com/example/miguelpelmedina/prempotrados/MainActivity.java	(revision 3171e47fe756e3ecd7cdeab42ab138ba66bff43d)
+@@ -2,12 +2,36 @@
+ 
+ import android.support.v7.app.AppCompatActivity;
+ import android.os.Bundle;
++import android.widget.EditText;
++import android.view.View;
++import android.widget.Toast;
+ 
+ public class MainActivity extends AppCompatActivity {
+ 
++    private EditText input;
++
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+         super.onCreate(savedInstanceState);
+         setContentView(R.layout.activity_main);
++
++        input = findViewById(R.id.InputPrinc);
++    }
++    //BOTON PULSADO
++    public void onClick(View view){
++            switch (view.getId()){
++                case R.id.Add_btn : AddContact(); break;
++                case R.id.Search_btn: SearchContact(); break;
++            }
++    }
++    /*
++        METODOS DEL BOTÓN
++     */
++
++    private void SearchContact() {
++        Toast.makeText(this, R.string.app_name, Toast.LENGTH_LONG).show();
++    }
++
++    private void AddContact() {
+     }
+ }
+Index: app/src/main/res/layout/activity_main.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_main.xml	(revision 1ecf8209826fcbfe73944c6697fa36bbe1b2ac74)
++++ app/src/main/res/layout/activity_main.xml	(revision 3171e47fe756e3ecd7cdeab42ab138ba66bff43d)
+@@ -4,15 +4,76 @@
+     xmlns:tools="http://schemas.android.com/tools"
+     android:layout_width="match_parent"
+     android:layout_height="match_parent"
+-    tools:context=".MainActivity">
++    tools:context=".MainActivity"
++    tools:layout_editor_absoluteY="81dp">
++
++    <EditText
++        android:id="@+id/InputPrinc"
++        android:layout_width="215dp"
++        android:layout_height="46dp"
++        android:layout_marginStart="12dp"
++        android:layout_marginLeft="12dp"
++        android:layout_marginTop="16dp"
++        android:layout_marginEnd="21dp"
++        android:layout_marginRight="21dp"
++        android:layout_marginBottom="92dp"
++        android:ems="10"
++        android:inputType="textPersonName"
++        android:text="@string/InputPlaceholder"
++        app:layout_constraintBottom_toTopOf="@+id/divider"
++        app:layout_constraintEnd_toStartOf="@+id/Search_btn"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toTopOf="parent" />
+ 
+-    <TextView
+-        android:layout_width="wrap_content"
+-        android:layout_height="wrap_content"
+-        android:text="Hello World!"
++    <Button
++        android:id="@+id/Search_btn"
++        android:layout_width="88dp"
++        android:layout_height="48dp"
++        android:layout_marginStart="21dp"
++        android:layout_marginLeft="21dp"
++        android:layout_marginTop="16dp"
++        android:layout_marginEnd="48dp"
++        android:layout_marginRight="48dp"
++        android:layout_marginBottom="16dp"
++        android:onClick="onClick"
++        android:text="@string/AddButton"
++        app:layout_constraintBottom_toTopOf="@+id/Add_btn"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toEndOf="@+id/InputPrinc"
++        app:layout_constraintTop_toTopOf="parent" />
++
++    <Button
++        android:id="@+id/Add_btn"
++        android:layout_width="88dp"
++        android:layout_height="48dp"
++        android:layout_marginStart="248dp"
++        android:layout_marginLeft="248dp"
++        android:layout_marginTop="16dp"
++        android:layout_marginEnd="48dp"
++        android:layout_marginRight="48dp"
++        android:layout_marginBottom="26dp"
++        android:onClick="onClick"
++        android:text="@string/SearchButton"
++        app:layout_constraintBottom_toTopOf="@+id/divider"
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintHorizontal_bias="1.0"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/Search_btn" />
++
++    <View
++        android:id="@+id/divider"
++        android:layout_width="368dp"
++        android:layout_height="1dp"
++        android:layout_marginStart="8dp"
++        android:layout_marginLeft="8dp"
++        android:layout_marginTop="18dp"
++        android:layout_marginEnd="8dp"
++        android:layout_marginRight="8dp"
++        android:layout_marginBottom="348dp"
++        android:background="?android:attr/listDivider"
+         app:layout_constraintBottom_toBottomOf="parent"
+-        app:layout_constraintLeft_toLeftOf="parent"
+-        app:layout_constraintRight_toRightOf="parent"
+-        app:layout_constraintTop_toTopOf="parent" />
++        app:layout_constraintEnd_toEndOf="parent"
++        app:layout_constraintStart_toStartOf="parent"
++        app:layout_constraintTop_toBottomOf="@+id/Add_btn" />
+ 
+ </android.support.constraint.ConstraintLayout>
+\ No newline at end of file
+Index: app/src/main/res/values/strings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/values/strings.xml	(revision 1ecf8209826fcbfe73944c6697fa36bbe1b2ac74)
++++ app/src/main/res/values/strings.xml	(revision 3171e47fe756e3ecd7cdeab42ab138ba66bff43d)
+@@ -1,3 +1,6 @@
+ <resources>
+     <string name="app_name">PrEmpotrados</string>
++    <string name="AddButton">Add</string>
++    <string name="SearchButton">Search</string>
++    <string name="InputPlaceholder">Enter Name</string>
+ </resources>
