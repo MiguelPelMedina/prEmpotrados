@@ -3,4 +3,8 @@
     <string name="AddButton">Add</string>
     <string name="SearchButton">Search</string>
     <string name="InputPlaceholder">Enter Name</string>
+    <string name="Back">Back</string>
+    <string name="name">name</string>
+    <string name="phone">phone</string>
+    <string name="error">Error</string>
 </resources>

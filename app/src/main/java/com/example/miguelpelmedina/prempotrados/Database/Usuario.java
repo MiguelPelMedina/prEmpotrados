@@ -7,17 +7,17 @@ public class Usuario {
     public static final String COLUMN_TLF = "tlf";
 
     private String name;
-    private int tlf;
+    private String tlf;
 
     public static final String CREATE_TABLE =
             "CREATE TABLE " + TABLE_NAME + "("
-                +COLUMN_NAME + "TEXT PRIMARY KEY,"
-                +COLUMN_TLF + "INTEGER)";
+                +COLUMN_NAME + " TEXT PRIMARY KEY,"
+                +COLUMN_TLF + " TEXT)";
 
     public Usuario(){
 
     }
-    public Usuario(String n, int t){
+    public Usuario(String n, String t){
         this.name = n; this.tlf = t;
     }
 
@@ -29,11 +29,11 @@ public class Usuario {
         this.name = name;
     }
 
-    public int getTlf() {
+    public String getTlf() {
         return tlf;
     }
 
-    public void setTlf(int tlf) {
+    public void setTlf(String tlf) {
         this.tlf = tlf;
     }
 }
