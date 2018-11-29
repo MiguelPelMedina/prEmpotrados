@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PrEmpotrados</string>
+    <string name="AddButton">Anyadir</string>
+    <string name="SearchButton">Buscar</string>
+    <string name="InputPlaceholder">introduzca nombre</string>
+    <string name="Back">Atrás</string>
+    <string name="name">nombre</string>
+    <string name="phone">teléfono</string>
+    <string name="error">Error</string>
+    <string name="errorNotFound">Usuario no encontrado</string>
+    <string name="call">Llamar</string>
+</resources>

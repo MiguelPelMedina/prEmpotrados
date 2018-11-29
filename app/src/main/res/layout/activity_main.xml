@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -7,21 +8,17 @@
     tools:context=".MainActivity"
     tools:layout_editor_absoluteY="81dp">
 
+
     <EditText
         android:id="@+id/InputPrinc"
         android:layout_width="215dp"
         android:layout_height="46dp"
         android:layout_marginStart="12dp"
         android:layout_marginLeft="12dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginRight="21dp"
-        android:layout_marginBottom="92dp"
+        android:layout_marginTop="24dp"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/InputPlaceholder"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
-        app:layout_constraintEnd_toStartOf="@+id/Search_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,35 +26,24 @@
         android:id="@+id/Search_btn"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:layout_marginStart="21dp"
-        android:layout_marginLeft="21dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
         android:onClick="onClick"
         android:text="@string/SearchButton"
-        app:layout_constraintBottom_toTopOf="@+id/Add_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/InputPrinc"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/Add_btn"
         android:layout_width="88dp"
         android:layout_height="48dp"
-        android:layout_marginStart="248dp"
-        android:layout_marginLeft="248dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginRight="48dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
         android:onClick="onClick"
         android:text="@string/AddButton"
-        app:layout_constraintBottom_toTopOf="@+id/divider"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Search_btn" />
 
     <View

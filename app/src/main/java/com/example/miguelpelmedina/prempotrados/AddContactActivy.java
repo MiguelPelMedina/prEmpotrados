@@ -30,6 +30,7 @@ public class AddContactActivy extends AppCompatActivity {
             case R.id.Back_btn: Back(); break;
         }
     }
+    //ACIONES DEL BOTON
     public void Add(){
         nameTxt = findViewById(R.id.NameInput);
         phoneTxt = findViewById(R.id.PhoneInput);

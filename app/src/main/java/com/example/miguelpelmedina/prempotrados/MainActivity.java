@@ -13,6 +13,7 @@ import com.example.miguelpelmedina.prempotrados.Database.DatabaseHelper;
 import com.example.miguelpelmedina.prempotrados.Database.Usuario;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     //input
@@ -51,10 +52,16 @@ public class MainActivity extends AppCompatActivity {
      */
 
     private void SearchContact() {
-        Toast.makeText(this, R.string.app_name, Toast.LENGTH_LONG).show();
-        adapter.addAll(
-                db.Search(
-                        input.getText().toString().trim().toLowerCase()));
+
+        adapter.clear();
+
+        List<Usuario> NewUsers = db.Search(input.getText().toString().trim().toLowerCase());
+        if(NewUsers.isEmpty()){
+            Toast.makeText(this, R.string.errorNotFound, Toast.LENGTH_LONG).show();
+        }else{
+            adapter.addAll(NewUsers);
+        }
+
     }
 
     private void AddContact() {
