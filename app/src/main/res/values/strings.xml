@@ -7,6 +7,10 @@
     <string name="name">name</string>
     <string name="phone">phone</string>
     <string name="error">Error</string>
+    <string name="calling">Calling</string>
+    <string name="errorMessage">An error ocurred</string>
+    <string name="InsertMessage">User inserted</string>
     <string name="errorNotFound">User not found</string>
     <string name="call">Call</string>
+
 </resources>

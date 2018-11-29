@@ -1,6 +1,8 @@
 package com.example.miguelpelmedina.prempotrados;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +14,8 @@ import android.widget.Toast;
 import com.example.miguelpelmedina.prempotrados.Database.Usuario;
 
 import java.util.ArrayList;
+
+import static android.support.v4.content.ContextCompat.startActivity;
 
 public class UsersAdapter extends ArrayAdapter<Usuario> {
 
@@ -33,11 +37,13 @@ public class UsersAdapter extends ArrayAdapter<Usuario> {
 
         name.setText(user.getName());
         phone.setText(user.getTlf());
+        callbtn.setTag(user.getTlf());
         callbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(getContext(),"LLAMANDO",Toast.LENGTH_LONG).show();
-
+                Intent intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+(String)view.getTag()));
+                startActivity(view.getContext(),intent,null);
             }
         });
 
