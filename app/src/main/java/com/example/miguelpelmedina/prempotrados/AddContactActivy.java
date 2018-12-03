@@ -1,6 +1,7 @@
 package com.example.miguelpelmedina.prempotrados;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.widget.Toast;
 
 import com.example.miguelpelmedina.prempotrados.Database.DatabaseHelper;
 import com.example.miguelpelmedina.prempotrados.Database.Usuario;
+
+import java.util.Locale;
 
 public class AddContactActivy extends AppCompatActivity {
 
@@ -29,9 +32,24 @@ public class AddContactActivy extends AppCompatActivity {
         switch (view.getId()){
             case R.id.Add_btn: Add(); break;
             case R.id.Back_btn: Back(); break;
+            case R.id.IdiomBtn: ChangeLanguage(); break;
+
         }
     }
     //ACIONES DEL BOTON
+    private void ChangeLanguage() {
+        Locale localizacion = new Locale("es", "ES");
+        if(Locale.getDefault().equals(localizacion)){
+            localizacion = new Locale("US", "US");
+        }
+
+        Locale.setDefault(localizacion);
+        Configuration config = new Configuration();
+        config.locale = localizacion;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        recreate();
+    }
+
     public void Add(){
         //Obtengo los parámetros
         nameTxt = findViewById(R.id.NameInput);

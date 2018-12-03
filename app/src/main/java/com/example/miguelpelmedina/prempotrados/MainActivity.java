@@ -1,6 +1,7 @@
 package com.example.miguelpelmedina.prempotrados;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,7 @@ import com.example.miguelpelmedina.prempotrados.Database.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
     //input
@@ -45,11 +47,25 @@ public class MainActivity extends AppCompatActivity {
             switch (view.getId()){
                 case R.id.Add_btn : AddContact(); break;
                 case R.id.Search_btn: SearchContact(); break;
+                case R.id.IdiomBtn:  ChangeLanguage(); break;
             }
     }
     /*
         METODOS DEL BOTÓN
      */
+
+    private void ChangeLanguage() {
+        Locale localizacion = new Locale("es", "ES");
+        if(Locale.getDefault().equals(localizacion)){
+            localizacion = new Locale("US", "US");
+        }
+
+        Locale.setDefault(localizacion);
+        Configuration config = new Configuration();
+        config.locale = localizacion;
+        getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
+        recreate();
+    }
 
     private void SearchContact() {
 
