@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.miguelpelmedina.prempotrados.Database.DatabaseHelper;
+import com.example.miguelpelmedina.prempotrados.Database.Agenda;
 import com.example.miguelpelmedina.prempotrados.Database.Usuario;
 
 import java.util.Locale;
@@ -18,14 +18,14 @@ public class AddContactActivy extends AppCompatActivity {
 
     EditText nameTxt;
     EditText phoneTxt;
-    DatabaseHelper db;
+    Agenda db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_contact_activy);
 
-        db = DatabaseHelper.getmInstance(this);
+        db = Agenda.getmInstance(this);
     }
 
     public void OnClick(View view){
@@ -67,8 +67,14 @@ public class AddContactActivy extends AppCompatActivity {
 
             //METER EN LA BD
             try {
-                db.add(new Usuario(name, numb));
+                String msg = "";
+                if(db.add(new Usuario(name, numb))){
+                    msg = getString(R.string.UpdateMessage);
+                }else{
+                    msg = getString(R.string.InsertMessage);
+                }
 
+                Toast.makeText(this, msg+"["+name+"]", Toast.LENGTH_LONG).show();
             } catch (Error e) {
                 new AlertDialog.Builder(this)
                         .setTitle(R.string.error)
@@ -76,8 +82,6 @@ public class AddContactActivy extends AppCompatActivity {
                         .setPositiveButton("OK", null)
                         .show();
             }
-            String msg = getString(R.string.InsertMessage);
-            Toast.makeText(this, msg+"["+name+"]", Toast.LENGTH_LONG).show();
         }
 
     }

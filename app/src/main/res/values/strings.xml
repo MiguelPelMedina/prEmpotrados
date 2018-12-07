@@ -10,6 +10,7 @@
     <string name="calling">Calling</string>
     <string name="errorMessage">An error ocurred</string>
     <string name="InsertMessage">User inserted</string>
+    <string name="UpdateMessage">User updated</string>
     <string name="errorNotFound">User not found</string>
     <string name="call">Call</string>
 

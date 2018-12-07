@@ -2,7 +2,6 @@ package com.example.miguelpelmedina.prempotrados;
 
 import android.content.Intent;
 import android.content.res.Configuration;
-import android.provider.ContactsContract;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -10,7 +9,7 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.miguelpelmedina.prempotrados.Database.DatabaseHelper;
+import com.example.miguelpelmedina.prempotrados.Database.Agenda;
 import com.example.miguelpelmedina.prempotrados.Database.Usuario;
 
 import java.util.ArrayList;
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     UsersAdapter adapter;
     private ListView list;
     //bd
-    DatabaseHelper db;
+    Agenda db;
 
 
     @Override
@@ -34,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         input = findViewById(R.id.InputPrinc);
-        db = DatabaseHelper.getmInstance(this);
+        db = Agenda.getmInstance(this);
 
         arrayOfUsers = new ArrayList<Usuario>();
         adapter = new UsersAdapter(this, arrayOfUsers);

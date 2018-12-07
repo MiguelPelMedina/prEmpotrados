@@ -9,23 +9,23 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DatabaseHelper extends SQLiteOpenHelper {
+public class Agenda extends SQLiteOpenHelper {
 
-    private static DatabaseHelper mInstance = null;
+    private static Agenda mInstance = null;
 
     //Database version
     private static final int DATABASE_VERSION = 1;
     // Database Name
     private static final String DATABASE_NAME ="usuarios_db";
 
-    private DatabaseHelper (Context context){
+    private Agenda(Context context){
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static DatabaseHelper getmInstance(Context ctx){
+    public static Agenda getmInstance(Context ctx){
         //Singleton
         if(mInstance == null){
-            mInstance = new DatabaseHelper(ctx.getApplicationContext());
+            mInstance = new Agenda(ctx.getApplicationContext());
         }
         return mInstance;
     }
@@ -54,12 +54,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor cursor =db.query(Usuario.TABLE_NAME,
                 new String[]{Usuario.COLUMN_NAME, Usuario.COLUMN_TLF},
                 Usuario.COLUMN_NAME +" LIKE ?",
-                new String[]{"%"+name+"%"},null,null,null,null);
+                new String[]{name+"%"},null,null,null,null);
         //recorremos los resultados y devolvemos la lista
-
-        //Cursor cursor = db.rawQuery("SELECT * FROM "+Usuario.TABLE_NAME,null);
-        //Cursor cursor = db.query(Usuario.TABLE_NAME, new String [] {Usuario.COLUMN_NAME, Usuario.COLUMN_TLF},
-        //                Usuario.COLUMN_NAME+"= ?",new String[]{name},null,null,null,null);
 
         if(cursor.moveToFirst()){
             do{
@@ -73,17 +69,30 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return users;
     }
 
-    public void add(Usuario u){
+    public boolean add(Usuario u){
         SQLiteDatabase db = this.getWritableDatabase();
-        //db.execSQL("INSERT INTO "+Usuario.TABLE_NAME+" ("+Usuario.COLUMN_NAME+", "
-        //            +Usuario.COLUMN_TLF+") VALUES ( ?, ?)", new String [] {u.getName(),  String.valueOf(u.getTlf())});
+        //Dos ramas: está en la bd o no
+        Cursor cursor = db.query(Usuario.TABLE_NAME,
+                new String[]{Usuario.COLUMN_NAME,Usuario.COLUMN_TLF},
+                Usuario.COLUMN_NAME+"=?",
+                new String[]{u.getName()},null,null,null,null);
 
         ContentValues valores = new ContentValues();
         valores.put(Usuario.COLUMN_NAME, u.getName());
         valores.put(Usuario.COLUMN_TLF,u.getTlf());
-        db.insert(Usuario.TABLE_NAME,null,valores);
+
+        boolean updated = false;
+        //Está en la bd
+        if(cursor.moveToFirst()){
+            db.update(Usuario.TABLE_NAME,valores,Usuario.COLUMN_NAME+"=?",
+                        new String[]{u.getName()});
+            updated = true;
+        }else{
+            db.insert(Usuario.TABLE_NAME,null,valores);
+        }
 
         db.close();
+        return updated;
 
     }
 

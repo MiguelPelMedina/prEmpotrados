@@ -11,6 +11,7 @@
     <string name="calling">Llamando</string>
     <string name="errorMessage">Se produjo un error</string>
     <string name="InsertMessage">Usuario insertado</string>
+    <string name="UpdateMessage">Usuario actualizado</string>
     <string name="errorNotFound">Usuario no encontrado</string>
     <string name="call">Llamar</string>
 
